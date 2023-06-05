@@ -1,6 +1,6 @@
 ﻿namespace SisorgCommandLineApp.CommandStrategy
 {
-    internal class CreateFileCommandStrategy : CommandStrategy
+    internal class CreateFileCommandStrategy : BaseCommandStrategy
     {
         private readonly string directoryPath;
         public CreateFileCommandStrategy(string directoryPath)

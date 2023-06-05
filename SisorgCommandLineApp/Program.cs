@@ -26,8 +26,9 @@ internal class Program
                     cmd.SetCommandStrategy(new MoveFileCommandStrategy(currentPath));
                     break;
                 default:
-                    cmd.SetCommandStrategy(new InvalidOptionsCommandStrategy());
-                    break;
+                    Console.WriteLine($"\"{userInputCommandArgs[0]}\" is not a valid or known command.\nPress any key to continue.");
+                    Console.ReadKey();
+                    continue;
             }
 
             string[] optionsArray = new string[userInputCommandArgs.Length-1];
@@ -36,7 +37,6 @@ internal class Program
             try 
             { 
                 cmd.ExecuteCommand(optionsArray);
-                Console.WriteLine($"Command successfully executed");
             } 
             catch(Exception ex)
             {

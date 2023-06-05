@@ -2,7 +2,7 @@
 
 namespace SisorgCommandLineApp.CommandStrategy
 {
-    internal abstract class CommandStrategy : ICommandStrategy
+    internal abstract class BaseCommandStrategy : ICommandStrategy
     {
         public abstract void Execute(string[] arguments);
 

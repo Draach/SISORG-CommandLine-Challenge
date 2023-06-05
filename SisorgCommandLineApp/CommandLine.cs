@@ -11,7 +11,6 @@ namespace SisorgCommandLineApp
         public CommandLine(string initialPath)
         {
             currentPath = initialPath;
-            strategy = new InvalidOptionsCommandStrategy();
         }
 
         public void SetCommandStrategy(ICommandStrategy strategy)

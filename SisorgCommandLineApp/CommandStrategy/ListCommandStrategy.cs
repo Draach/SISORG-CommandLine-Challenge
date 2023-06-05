@@ -1,10 +1,10 @@
 ﻿namespace SisorgCommandLineApp.CommandStrategy
 {
-    internal class InvalidOptionsCommandStrategy : CommandStrategy
+    internal class ListCommandStrategy : BaseCommandStrategy
     {
         public override void Execute(string[] arguments)
         {
-            ThrowIfThereAreNoArguments(arguments);
+            throw new NotImplementedException();
         }
     }
 }
