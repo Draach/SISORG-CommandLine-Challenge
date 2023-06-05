@@ -25,6 +25,9 @@ internal class Program
                 case "mv":
                     cmd.SetCommandStrategy(new MoveFileCommandStrategy(currentPath));
                     break;
+                case "ls":
+                    cmd.SetCommandStrategy(new ListCommandStrategy(currentPath));
+                    break;
                 default:
                     Console.WriteLine($"\"{userInputCommandArgs[0]}\" is not a valid or known command.\nPress any key to continue.");
                     Console.ReadKey();
