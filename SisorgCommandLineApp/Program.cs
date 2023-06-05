@@ -31,6 +31,9 @@ internal class Program
                 case "cd":
                     cmd.SetCommandStrategy(new ChangeDirectoryCommandStrategy(cmd));
                     break;
+                case "help":
+                    cmd.SetCommandStrategy(new HelpCommandStrategy());
+                    break;
                 default:
                     Console.WriteLine($"\"{userInputCommandArgs[0]}\" is not a valid or known command.\nPress any key to continue.");
                     Console.ReadKey();

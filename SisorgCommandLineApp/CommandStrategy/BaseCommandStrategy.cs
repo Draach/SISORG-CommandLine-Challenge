@@ -11,6 +11,8 @@ namespace SisorgCommandLineApp.CommandStrategy
         {
             if (arguments is null || arguments.Length == 0) throw new ArgumentNullException(nameof(arguments));
         }
+
+        // TODO: Maybe move to a Path utils class.
         protected bool IsValidPath(string value)
         {
             // TODO: Improve validation.
