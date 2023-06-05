@@ -28,6 +28,9 @@ internal class Program
                 case "ls":
                     cmd.SetCommandStrategy(new ListCommandStrategy(currentPath));
                     break;
+                case "cd":
+                    cmd.SetCommandStrategy(new ChangeDirectoryCommandStrategy(cmd));
+                    break;
                 default:
                     Console.WriteLine($"\"{userInputCommandArgs[0]}\" is not a valid or known command.\nPress any key to continue.");
                     Console.ReadKey();

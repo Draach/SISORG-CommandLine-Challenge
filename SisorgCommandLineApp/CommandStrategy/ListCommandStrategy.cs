@@ -12,7 +12,6 @@
         {
             // TODO: Consider -R flag.
             string[] files = Directory.GetFiles(directoryPath);
-
             string[] directories = Directory.GetDirectories(directoryPath);
             foreach (string file in files)
             {

@@ -11,6 +11,11 @@ namespace SisorgCommandLineApp.CommandStrategy
         {
             if (arguments is null || arguments.Length == 0) throw new ArgumentNullException(nameof(arguments));
         }
+        protected bool IsValidPath(string value)
+        {
+            // TODO: Improve validation.
+            return value.Contains("\\");
+        }
         #endregion
     }
 }

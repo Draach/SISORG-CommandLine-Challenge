@@ -13,11 +13,11 @@
             ThrowIfInvalidArgumentsQuantity(arguments);
 
 
-            if (!IsPath(arguments[0]) && FileExists(JoinFileNameWithPath(arguments[0])))
+            if (!IsValidPath(arguments[0]) && FileExists(JoinFileNameWithPath(arguments[0])))
             {
                 File.Move(JoinFileNameWithPath(arguments[0]), JoinFileNameWithPath(arguments[1]));
             }
-            else if (IsPath(arguments[0]) && IsPath(arguments[1]) && FileExists(arguments[0]))
+            else if (IsValidPath(arguments[0]) && IsValidPath(arguments[1]) && FileExists(arguments[0]))
             {
                 string sourceFilePath = arguments[0];
                 string destinationFolder = arguments[1];
@@ -47,12 +47,6 @@
         private string JoinFileNameWithPath(string fileName)
         {
             return directoryPath + "\\" + fileName;
-        }
-
-        private bool IsPath(string value)
-        {
-            // TODO: Improve validation.
-            return value.Contains("\\");
         }
     }
 }

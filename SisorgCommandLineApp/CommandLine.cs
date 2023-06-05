@@ -5,12 +5,18 @@ namespace SisorgCommandLineApp
 {
     internal class CommandLine
     {
-        public readonly string currentPath;
+        public string currentPath { get; private set; }
         private ICommandStrategy strategy;
 
         public CommandLine(string initialPath)
         {
             currentPath = initialPath;
+        }
+
+        public string ChangeDirectory(string path)
+        {
+            this.currentPath = path;
+            return this.currentPath;
         }
 
         public void SetCommandStrategy(ICommandStrategy strategy)
