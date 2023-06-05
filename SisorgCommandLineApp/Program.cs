@@ -23,7 +23,7 @@ internal class Program
                     cmd.SetCommandStrategy(new CreateFileCommandStrategy(currentPath));
                     break;
                 case "mv":
-                    cmd.SetCommandStrategy(new MoveFileCommandStrategy());
+                    cmd.SetCommandStrategy(new MoveFileCommandStrategy(currentPath));
                     break;
                 default:
                     cmd.SetCommandStrategy(new InvalidOptionsCommandStrategy());
