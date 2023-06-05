@@ -1,0 +1,11 @@
+# .NET Core build output
+/bin/
+/obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userprefs
+*.vscode
+*.sln.ide
