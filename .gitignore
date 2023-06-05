@@ -1,6 +1,6 @@
 # .NET Core build output
-/bin/
-/obj/
+bin/
+obj/
 
 # Visual Studio files
 .vs/

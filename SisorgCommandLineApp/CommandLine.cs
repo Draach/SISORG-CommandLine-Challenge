@@ -1,5 +1,4 @@
-﻿using SisorgCommandLineApp.CommandStrategy;
-using SisorgCommandLineApp.CommandStrategy.Interfaces;
+﻿using SisorgCommandLineApp.CommandStrategy.Interfaces;
 
 namespace SisorgCommandLineApp
 {
