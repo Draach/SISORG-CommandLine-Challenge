@@ -1,33 +1,72 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SisorgCommandLineApp;
+using SisorgCommandLineApp.CommandStrategy;
+using System;
 
-// TODO: Get current path on init.
-string placeholderPath = "C:\\";
-string currentPath = $"{placeholderPath}>";
-
-Console.WriteLine("Press Control + C to stop the application.");
-
-while (true)
+internal class Program
 {
-    Console.WriteLine(currentPath);
-    string userInput = Console.ReadLine();
-
-    switch (userInput)
+    private static void Main(string[] args)
     {
-        case "tch":
-            break;
-        case "mv":
-            break;
-        case "ls":
-            break;
-        case "ls -R":
-            break;
-        case "cd":
-            break;
-        case "help":
-            break;
-        default:
-            Console.WriteLine($"\"{userInput}\" no se reconoce como un comando disponible.");
-            break;
+        string currentPath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+        CommandLine cmd = new CommandLine(currentPath);
+        
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Press Control + C to stop the application.");
+            currentPath = cmd.currentPath;
+            Console.WriteLine(currentPath);
+            string userInput = GetUserInput();
+            string[] userInputCommandArgs = userInput.Split();
+            switch (userInputCommandArgs[0])
+            {
+                case "tch":
+                    cmd.SetCommandStrategy(new CreateFileCommandStrategy(currentPath));
+                    break;
+                case "mv":
+                    cmd.SetCommandStrategy(new MoveFileCommandStrategy());
+                    break;
+                default:
+                    cmd.SetCommandStrategy(new InvalidOptionsCommandStrategy());
+                    break;
+            }
+
+            string[] optionsArray = new string[userInputCommandArgs.Length-1];
+            Array.Copy(userInputCommandArgs, 1, optionsArray, 0, userInputCommandArgs.Length - 1);
+
+            try 
+            { 
+                cmd.ExecuteCommand(optionsArray);
+                Console.WriteLine($"Command successfully executed");
+            } 
+            catch(Exception ex)
+            {
+                Console.WriteLine($"\nThe following error ocurred: \"{ex.Message}\", So the command was not executed.");
+            }
+
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
+        }
+    }
+
+    private static string GetUserInput()
+    {
+        string userInput;
+
+        try
+        {
+            userInput = Console.ReadLine();
+            if (userInput == null)
+            {
+                throw new Exception("User input has a null value.");
+            }
+        }
+        catch (Exception ex)
+        {
+            userInput = "";
+            Console.WriteLine($"An error ocurred: {ex.Message}\nPress any key to continue.");
+            Console.ReadKey();
+        }
+
+        return userInput;
     }
 }
